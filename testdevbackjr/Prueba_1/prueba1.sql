@@ -57,3 +57,7 @@ Select GROUP_CONCAT(u.nombre) as "empleados menor a 1200" , e.sueldo as "sueldo"
  group by sueldo
 having sueldo < 1200  ;
 
+
+Select GROUP_CONCAT(u.nombre) as "empleados mayor o igual a 1200" , e.sueldo as "sueldo" from empleados e LEFT JOIN usuarios u on e.userId = u.userId 
+ group by sueldo
+having sueldo >= 1200  ;
