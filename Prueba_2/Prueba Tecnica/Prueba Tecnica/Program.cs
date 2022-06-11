@@ -86,11 +86,19 @@ try
         command.ExecuteNonQuery();
         Console.WriteLine("Usuario user01 se ajusto su sueldo a 600");
 
-
+        command = new MySqlCommand(Querys.add_user, connection);
+        command.Parameters.AddWithValue("@puserName", "HadadBG");
+        command.Parameters.AddWithValue("@pnombre", "Hadad");
+        command.Parameters.AddWithValue("@ppaterno", "Bautista");
+        command.Parameters.AddWithValue("@pmaterno", "García");
+        command.Parameters.AddWithValue("@psueldo", 15000);
+        command.ExecuteNonQuery();
+        Console.WriteLine("Usuario añadido , se añdio a HadadBG");
+        connection.Close();
     }
 
 }
 catch (MySql.Data.MySqlClient.MySqlException ex)
 {
-    Console.WriteLine(ex.Message);
+    Console.WriteLine(ex.StackTrace);
 }

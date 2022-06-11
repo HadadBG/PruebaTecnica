@@ -20,6 +20,20 @@ namespace Prueba_Tecnica
         public static string update_user = @"UPDATE empleados e
                                              LEFT JOIN usuarios u ON e.userId = u.userId 
                                              SET e.sueldo = @pSalario WHERE u.Login = @pUser;";
+        public static string add_user = @"
+            START TRANSACTION;
+                INSERT INTO usuarios (Login,Nombre,Paterno,Materno) values (
+                    @puserName,
+                    @pnombre,
+                    @ppaterno,
+                    @pmaterno
+                );
+                INSERT INTO empleados (userId , Sueldo,FechaIngreso) values (
+                    LAST_INSERT_ID(),
+                    @psueldo,
+                    CURRENT_DATE()
+                );
+            COMMIT;";
 
     }
 }
