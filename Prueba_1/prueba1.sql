@@ -62,4 +62,3 @@ Select GROUP_CONCAT(u.nombre) as "empleados mayor o igual a 1200" , e.sueldo as 
  group by sueldo
 having sueldo >= 1200 ;
 
-       
