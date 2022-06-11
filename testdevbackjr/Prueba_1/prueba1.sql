@@ -18,7 +18,7 @@ create table empleados(
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/DatosPracticaSQL1.csv' 
 INTO TABLE usuarios 
 FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\n'(Login,Nombre,Paterno,Materno);
+LINES TERMINATED BY '\r\n'(Login,Nombre,Paterno,Materno);
 
 
 DELIMITER $$
@@ -39,7 +39,7 @@ LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/DatosPracticaSQL
 INTO TABLE empleados 
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n'(userId,@var1,FechaIngreso)
+LINES TERMINATED BY '\r\n'(userId,@var1,FechaIngreso)
 SET Sueldo = transform(@var1);
 
 select userId from usuarios where  userId<6 or userId>11 or userId=8;
@@ -60,4 +60,6 @@ having sueldo < 1200  ;
 
 Select GROUP_CONCAT(u.nombre) as "empleados mayor o igual a 1200" , e.sueldo as "sueldo" from empleados e LEFT JOIN usuarios u on e.userId = u.userId 
  group by sueldo
-having sueldo >= 1200  ;
+having sueldo >= 1200 ;
+
+       
